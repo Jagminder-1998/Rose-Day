@@ -23,24 +23,77 @@ body{
 }
 
 .card{
-  background: linear-gradient(180deg, #ffffff, #fff5f7);
-  padding: 45px 35px;
-  border-radius: 30px;
-  max-width: 340px;
-  color: #8b0000;
+  background: linear-gradient(180deg, #ffffff, #fff1f5);
+  padding: 50px 35px;
+  border-radius: 35px;
+  max-width: 360px;
+  text-align: center;
   cursor: pointer;
   box-shadow:
-    0 20px 40px rgba(139,0,0,0.25),
-    inset 0 0 10px rgba(255,182,193,0.4);
-  transition: transform 0.35s, box-shadow 0.35s;
+    0 25px 60px rgba(139,0,0,0.35),
+    inset 0 0 18px rgba(255,182,193,0.6);
+  animation: glow 3s infinite ease-in-out;
 }
 
-.card:hover{
-  transform: scale(1.06);
-  box-shadow:
-    0 25px 50px rgba(139,0,0,0.35),
-    inset 0 0 14px rgba(255,182,193,0.6);
+@keyframes glow{
+  0%,100%{ box-shadow:
+    0 25px 60px rgba(139,0,0,0.35),
+    inset 0 0 18px rgba(255,182,193,0.6);
+  }
+  50%{ box-shadow:
+    0 30px 70px rgba(139,0,0,0.45),
+    inset 0 0 25px rgba(255,182,193,0.8);
+  }
 }
+
+/* TEXT */
+.title{
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #8b0000;
+  margin-bottom: 15px;
+}
+
+.subtitle{
+  font-size: 18px;
+  line-height: 1.6;
+  color: #5c0000;
+  margin-bottom: 25px;
+}
+
+/* CTA */
+.cta{
+  font-size: 20px;
+  font-weight: bold;
+  padding: 12px 26px;
+  border-radius: 30px;
+  background: #8b0000;
+  color: white;
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{ transform: scale(1); }
+  50%{ transform: scale(1.08); }
+}
+
+/* FLOWERS */
+.flowers{
+  font-size: 24px;
+  letter-spacing: 6px;
+  opacity: 0.85;
+}
+
+.flowers.top{
+  margin-bottom: 20px;
+}
+
+.flowers.bottom{
+  margin-top: 25px;
+}
+
 
 
 /* ---------- BOUQUET ---------- */
@@ -124,21 +177,27 @@ body{
 <!-- HOME -->
 <div id="home">
   <div class="card" onclick="openExperience()">
-    <h2 style="font-weight: normal; line-height:1.5;">
-I couldn’t give you a rose in person 🌹<br>
-  <span style="font-size:22px;">so I coded one for you</span>
-</h2>
 
-<p style="
-  margin-top:22px;
-  font-size:19px;
-  letter-spacing:0.5px;
-">
-  Open this ❤️
-</p>
+    <div class="flowers top">🌸 🌷 🌹 🌼</div>
+
+    <h1 class="title">
+      A Rose for You
+    </h1>
+
+    <p class="subtitle">
+      I couldn’t give you a rose in person,<br>
+      so I coded one for you 🌹
+    </p>
+
+    <div class="cta">
+      Open this ❤️
+    </div>
+
+    <div class="flowers bottom">🌹 🌸 🌷 🌼</div>
 
   </div>
 </div>
+
 
 <!-- BOUQUET -->
 <div id="bouquet" class="hidden">
