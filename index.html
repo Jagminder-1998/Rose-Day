@@ -51,8 +51,8 @@ body{
 
 .roses{
   position:relative;
-  width:280px;
-  height:380px;
+  width:260px;
+  height:360px;
   margin:30px auto;
 }
 
@@ -141,6 +141,7 @@ body{
 </audio>
 
 <script>
+/* ---------- MAIN FLOW ---------- */
 let musicStarted=false;
 
 function openExperience(){
@@ -151,27 +152,21 @@ function openExperience(){
   startPetals();
 }
 
-/* ---------- EXACTLY 20 ROSES (BOUQUET SHAPE) ---------- */
+/* ---------- ROSE BOUQUET SHAPE ---------- */
 function createRoses(){
   const container=document.getElementById("roses");
   if(container.children.length>0) return;
 
   const positions=[
-    /* top */
-    {x:120,y:10},{x:80,y:25},{x:160,y:25},{x:200,y:35},
-    /* upper mid */
-    {x:50,y:65},{x:100,y:70},{x:150,y:75},{x:200,y:70},
-    /* middle */
-    {x:40,y:115},{x:90,y:120},{x:140,y:125},{x:190,y:120},{x:230,y:115},
-    /* lower mid */
-    {x:80,y:175},{x:130,y:180},{x:180,y:175},
-    /* bottom */
-    {x:110,y:235},{x:150,y:235},
-    /* stems convergence */
-    {x:130,y:295},{x:140,y:315}
+    {x:120,y:10},{x:90,y:25},{x:150,y:25},
+    {x:60,y:60},{x:120,y:65},{x:180,y:60},
+    {x:45,y:105},{x:95,y:110},{x:145,y:115},{x:195,y:105},
+    {x:70,y:165},{x:120,y:170},{x:170,y:165},
+    {x:100,y:225},{x:140,y:225},
+    {x:120,y:285}
   ];
 
-  for(let i=0;i<20;i++){
+  for(let i=0;i<positions.length;i++){
     const r=document.createElement("div");
     r.className="rose";
     r.innerText="🌹";
@@ -217,3 +212,4 @@ function startPetals(){
 
 </body>
 </html>
+
