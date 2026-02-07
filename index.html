@@ -1,139 +1,163 @@
-<div id="home" class="home-card" onclick="openBouquet()">
-  <h1>
-    I couldn’t give you a rose in person… 🌹<br>
-    so I coded one for you<br><br>
-    <span>Open this ❤️</span>
-  </h1>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Rose Day ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div id="bouquet" class="hidden">
-  <p class="hint">Click the roses one by one 🌹</p>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#ffdde1, #ee9ca7);
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-  <div class="roses">
-    <div class="rose" onclick="openPhoto(1)">🌹</div>
-    <div class="rose" onclick="openPhoto(2)">🌹</div>
-    <div class="rose" onclick="openPhoto(3)">🌹</div>
-    <div class="rose" onclick="openPhoto(4)">🌹</div>
-    <div class="rose" onclick="openPhoto(5)">🌹</div>
-    <div class="rose" onclick="openPhoto(6)">🌹</div>
-    <div class="rose" onclick="openPhoto(7)">🌹</div>
-    <div class="rose" onclick="openPhoto(8)">🌹</div>
-    <div class="rose" onclick="openPhoto(9)">🌹</div>
-    <div class="rose" onclick="openPhoto(10)">🌹</div>
-    <div class="rose" onclick="openPhoto(11)">🌹</div>
-    <div class="rose" onclick="openPhoto(12)">🌹</div>
-    <div class="rose" onclick="openPhoto(13)">🌹</div>
-    <div class="rose" onclick="openPhoto(14)">🌹</div>
-    <div class="rose" onclick="openPhoto(15)">🌹</div>
-    <div class="rose" onclick="openPhoto(16)">🌹</div>
-    <div class="rose" onclick="openPhoto(17)">🌹</div>
-    <div class="rose" onclick="openPhoto(18)">🌹</div>
-    <div class="rose" onclick="openPhoto(19)">🌹</div>
-    <div class="rose" onclick="openPhoto(20)">🌹</div>
+    /* ---------- HOME CARD ---------- */
+    .home-card {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+      cursor: pointer;
+    }
+
+    .home-card h1 {
+      background: white;
+      padding: 35px 25px;
+      border-radius: 25px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      color: #8b0000;
+      line-height: 1.4;
+    }
+
+    .home-card span {
+      font-size: 22px;
+    }
+
+    /* ---------- BOUQUET ---------- */
+    .hidden {
+      display: none;
+    }
+
+    .hint {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #8b0000;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .roses {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 360px;
+      margin: 30px auto;
+    }
+
+    .rose {
+      font-size: 42px;
+      margin: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .rose:hover {
+      transform: scale(1.3);
+    }
+
+    /* ---------- PHOTO MODAL ---------- */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HOME SCREEN -->
+  <div id="home" class="home-card" onclick="openBouquet()">
+    <h1>
+      I couldn’t give you a rose in person… 🌹<br>
+      so I coded one for you<br><br>
+      <span>Open this ❤️</span>
+    </h1>
   </div>
-</div>
 
-<div id="photoModal" class="modal hidden">
-  <img id="photoDisplay">
-</div>
+  <!-- BOUQUET SCREEN -->
+  <div id="bouquet" class="hidden">
+    <p class="hint">Click the roses one by one 🌹</p>
 
+    <div class="roses">
+      <div class="rose" onclick="openPhoto(1)">🌹</div>
+      <div class="rose" onclick="openPhoto(2)">🌹</div>
+      <div class="rose" onclick="openPhoto(3)">🌹</div>
+      <div class="rose" onclick="openPhoto(4)">🌹</div>
+      <div class="rose" onclick="openPhoto(5)">🌹</div>
+      <div class="rose" onclick="openPhoto(6)">🌹</div>
+      <div class="rose" onclick="openPhoto(7)">🌹</div>
+      <div class="rose" onclick="openPhoto(8)">🌹</div>
+      <div class="rose" onclick="openPhoto(9)">🌹</div>
+      <div class="rose" onclick="openPhoto(10)">🌹</div>
+      <div class="rose" onclick="openPhoto(11)">🌹</div>
+      <div class="rose" onclick="openPhoto(12)">🌹</div>
+      <div class="rose" onclick="openPhoto(13)">🌹</div>
+      <div class="rose" onclick="openPhoto(14)">🌹</div>
+      <div class="rose" onclick="openPhoto(15)">🌹</div>
+      <div class="rose" onclick="openPhoto(16)">🌹</div>
+      <div class="rose" onclick="openPhoto(17)">🌹</div>
+      <div class="rose" onclick="openPhoto(18)">🌹</div>
+      <div class="rose" onclick="openPhoto(19)">🌹</div>
+      <div class="rose" onclick="openPhoto(20)">🌹</div>
+    </div>
+  </div>
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(#ffdde1, #ee9ca7);
-  text-align: center;
-}
+  <!-- PHOTO MODAL -->
+  <div id="photoModal" class="modal hidden" onclick="closePhoto()">
+    <img id="photoDisplay" alt="Our memory">
+  </div>
 
-/* Home card */
-.home-card {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  cursor: pointer;
-}
+  <!-- JAVASCRIPT -->
+  <script>
+    function openBouquet() {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("bouquet").classList.remove("hidden");
+    }
 
-.home-card h1 {
-  background: white;
-  padding: 40px;
-  border-radius: 25px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  color: #8b0000;
-}
+    function openPhoto(num) {
+      const modal = document.getElementById("photoModal");
+      const img = document.getElementById("photoDisplay");
 
-.home-card span {
-  font-size: 22px;
-}
+      img.src = "pic" + num + ".jpg";
+      modal.classList.remove("hidden");
+    }
 
-/* Bouquet */
-.hidden {
-  display: none;
-}
+    function closePhoto() {
+      document.getElementById("photoModal").classList.add("hidden");
+    }
+  </script>
 
-.hint {
-  margin-top: 20px;
-  font-size: 18px;
-  animation: float 2s infinite;
-}
+</body>
+</html>
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.roses {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 350px;
-  margin: 30px auto;
-}
-
-.rose {
-  font-size: 40px;
-  margin: 10px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.rose:hover {
-  transform: scale(1.3);
-}
-
-/* Photo modal */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(0,0,0,0.7);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal img {
-  max-width: 90%;
-  max-height: 80%;
-  border-radius: 20px;
-}
-
-function openBouquet() {
-  document.getElementById("home").style.display = "none";
-  document.getElementById("bouquet").classList.remove("hidden");
-}
-
-function openPhoto(num) {
-  const modal = document.getElementById("photoModal");
-  const img = document.getElementById("photoDisplay");
-
-  img.src = "pic" + num + ".jpg";
-  modal.classList.remove("hidden");
-
-  modal.onclick = () => {
-    modal.classList.add("hidden");
-  };
-}
