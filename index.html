@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Rose Day ❤️</title>
+<title>Rose Day ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -10,108 +10,61 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(#ffdde1, #ee9ca7);
-  overflow-x: hidden;
   text-align: center;
 }
 
-/* ---------- HOME ---------- */
+/* HOME */
 #home {
-  position: fixed;
-  inset: 0;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
 }
 
 .card {
   background: white;
-  padding: 35px 25px;
-  border-radius: 25px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  padding: 30px;
+  border-radius: 20px;
   color: #8b0000;
   cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* ---------- BOUQUET ---------- */
-.hidden {
-  display: none;
-}
-
-#bouquet {
-  position: relative;
-  z-index: 5;
-}
-
-.hint {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #8b0000;
-  animation: float 2s infinite;
-}
-
-@keyframes float {
-  50% { transform: translateY(-8px); }
-}
+/* BOUQUET */
+.hidden { display: none; }
 
 .roses {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 360px;
-  margin: 30px auto;
+  margin: 20px auto;
 }
 
 .rose {
-  font-size: 42px;
+  font-size: 40px;
   margin: 10px;
   cursor: pointer;
 }
 
-/* ---------- PHOTO MODAL ---------- */
-#photoModal {
+/* PHOTO MODAL */
+#modal {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 20;
 }
 
-#photoModal.hidden {
+#modal.hidden {
   display: none;
 }
 
-#photoModal img {
+#modal img {
   max-width: 90%;
   max-height: 80%;
-  border-radius: 20px;
-}
-
-/* ---------- PETALS ---------- */
-.petal {
-  position: fixed;
-  top: -30px;
-  font-size: 20px;
-  animation: fall linear infinite;
-  z-index: 1;
-}
-
-@keyframes fall {
-  to { transform: translateY(110vh) rotate(360deg); }
-}
-
-/* ---------- MUSIC ---------- */
-#musicBtn {
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-  background: white;
-  border-radius: 50%;
-  padding: 12px;
-  cursor: pointer;
-  z-index: 30;
+  border-radius: 15px;
 }
 </style>
 </head>
@@ -122,7 +75,7 @@ body {
 <div id="home">
   <div class="card" onclick="openBouquet()">
     <h2>
-      I couldn’t give you a rose in person… 🌹<br>
+      I couldn’t give you a rose in person 🌹<br>
       so I coded one for you<br><br>
       <span>Open this ❤️</span>
     </h2>
@@ -131,73 +84,39 @@ body {
 
 <!-- BOUQUET -->
 <div id="bouquet" class="hidden">
-  <p class="hint">Click the roses one by one 🌹</p>
+  <p>Click the roses one by one 🌹</p>
   <div class="roses" id="roses"></div>
 </div>
 
-<!-- PHOTO MODAL (HIDDEN BY DEFAULT) -->
-<div id="photoModal" class="hidden" onclick="closePhoto()">
-  <img id="photoDisplay">
+<!-- MODAL -->
+<div id="modal" class="hidden" onclick="closeModal()">
+  <img id="modalImg">
 </div>
-
-<!-- MUSIC -->
-<div id="musicBtn" onclick="toggleMusic()">🎵</div>
-<audio id="bgMusic" loop>
-  <source src="song.mp3" type="audio/mpeg">
-</audio>
 
 <script>
 function openBouquet() {
   document.getElementById("home").style.display = "none";
   document.getElementById("bouquet").classList.remove("hidden");
-  createRoses();
-  startPetals();
-}
 
-function createRoses() {
-  const container = document.getElementById("roses");
-  if (container.children.length > 0) return;
-  for (let i = 1; i <= 20; i++) {
-    const r = document.createElement("div");
-    r.className = "rose";
-    r.innerText = "🌹";
-    r.onclick = () => openPhoto(i);
-    container.appendChild(r);
+  const roses = document.getElementById("roses");
+  if (roses.children.length === 0) {
+    for (let i = 1; i <= 20; i++) {
+      const r = document.createElement("div");
+      r.className = "rose";
+      r.innerText = "🌹";
+      r.onclick = () => openImage(i);
+      roses.appendChild(r);
+    }
   }
 }
 
-function openPhoto(num) {
-  const modal = document.getElementById("photoModal");
-  document.getElementById("photoDisplay").src = "pic" + num + ".jpeg";
-  modal.classList.remove("hidden");
+function openImage(n) {
+  document.getElementById("modalImg").src = "pic" + n + ".jpeg";
+  document.getElementById("modal").classList.remove("hidden");
 }
 
-function closePhoto() {
-  document.getElementById("photoModal").classList.add("hidden");
-}
-
-function startPetals() {
-  setInterval(() => {
-    const petal = document.createElement("div");
-    petal.className = "petal";
-    petal.innerText = "🌸";
-    petal.style.left = Math.random() * 100 + "vw";
-    petal.style.animationDuration = (5 + Math.random() * 5) + "s";
-    document.body.appendChild(petal);
-    setTimeout(() => petal.remove(), 10000);
-  }, 600);
-}
-
-let playing = false;
-function toggleMusic() {
-  const music = document.getElementById("bgMusic");
-  if (!playing) {
-    music.play();
-    playing = true;
-  } else {
-    music.pause();
-    playing = false;
-  }
+function closeModal() {
+  document.getElementById("modal").classList.add("hidden");
 }
 </script>
 
